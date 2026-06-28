@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "extensionId": "irodori.databricks",
+  "visibility": "public",
+  "version": "0.1.0",
+  "connector": {
+    "id": "databricks.connector",
+    "engine": "databricks",
+    "label": "Databricks",
+    "aliases": [
+      "databricks",
+      "Databricks / Spark SQL",
+      "Databricks"
+    ],
+    "defaultPort": 443,
+    "wire": "jdbc",
+    "module": "databricks.driver",
+    "features": [
+      "metadata",
+      "sql",
+      "explain"
+    ]
+  },
+  "connection": {
+    "endpoint": {
+      "modes": [
+        "hostPort",
+        "connectionString"
+      ],
+      "defaultPort": 443,
+      "fields": [
+        {
+          "id": "host",
+          "label": "Host",
+          "type": "string",
+          "profileField": "host",
+          "required": true
+        },
+        {
+          "id": "port",
+          "label": "Port",
+          "type": "number",
+          "profileField": "port",
+          "default": 443
+        },
+        {
+          "id": "database",
+          "label": "Database",
+          "type": "string",
+          "profileField": "database"
+        }
+      ]
+    },
+    "authMethods": [
+      "none",
+      "connectionString",
+      "personalAccessToken",
+      "oauth2",
+      "azureAd",
+      "servicePrincipal",
+      "managedIdentity",
+      "browserSso",
+      "customDriverOptions"
+    ],
+    "tls": "required",
+    "transports": "default",
+    "optionNamespaces": [
+      "jdbc",
+      "databricks",
+      "oauth",
+      "azure"
+    ],
+    "customDriverOptions": true
+  },
+  "runtime": {
+    "driverLinked": false
+  },
+  "source": {
+    "knowledgeEngineStatus": "recognized_no_connector",
+    "adapter": null
+  }
+}
