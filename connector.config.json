@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "visibility": "public",
+  "extensionId": "irodori.databricks",
+  "connector": {
+    "id": "databricks.connector",
+    "engine": "databricks",
+    "label": "Databricks",
+    "aliases": [
+      "databricks",
+      "Databricks / Spark SQL",
+      "Databricks"
+    ],
+    "defaultPort": 443,
+    "wire": "jdbc",
+    "module": "databricks.driver",
+    "features": [
+      "metadata",
+      "sql",
+      "explain"
+    ]
+  },
+  "runtime": {
+    "abi": "irodori.connector.native.v1",
+    "module": {
+      "id": "databricks.driver",
+      "path": "dist/native",
+      "platforms": [
+        "windowsX64",
+        "windowsArm64",
+        "macosX64",
+        "macosArm64",
+        "linuxX64",
+        "linuxArm64"
+      ]
+    },
+    "crate": "irodori_extension_databricks",
+    "entrypoints": [
+      "irodori_extension_abi_version",
+      "irodori_connector_engine_json",
+      "irodori_extension_manifest_json",
+      "irodori_connector_config_json",
+      "irodori_connector_call_json",
+      "irodori_connector_free_buffer"
+    ],
+    "supportedCalls": [
+      "health",
+      "describe",
+      "manifest",
+      "config"
+    ],
+    "driverLinked": false
+  },
+  "source": {
+    "marketplaceId": "irodori.databricks",
+    "repository": "https://github.com/hjosugi/irodori-extension-databricks",
+    "knowledgeEngineStatus": "recognized_no_connector",
+    "adapter": null,
+    "adapterSha256": null
+  }
+}
