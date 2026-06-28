@@ -37,7 +37,330 @@
           "metadata",
           "sql",
           "explain"
-        ]
+        ],
+        "connection": {
+          "schemaVersion": 1,
+          "inferEnvironmentFrom": [
+            "name",
+            "id",
+            "host",
+            "database",
+            "url"
+          ],
+          "compatibility": {
+            "addsRequiredProfileFields": false,
+            "acceptsExistingProfiles": true
+          },
+          "defaults": {
+            "engine": "databricks",
+            "wire": "jdbc",
+            "port": 443,
+            "readOnly": false
+          },
+          "endpoint": {
+            "modes": [
+              "hostPort",
+              "connectionString"
+            ],
+            "defaultPort": 443,
+            "fields": [
+              {
+                "id": "host",
+                "label": "Host",
+                "type": "string",
+                "profileField": "host",
+                "required": true
+              },
+              {
+                "id": "port",
+                "label": "Port",
+                "type": "number",
+                "profileField": "port",
+                "default": 443
+              },
+              {
+                "id": "database",
+                "label": "Database",
+                "type": "string",
+                "profileField": "database"
+              }
+            ]
+          },
+          "profileFields": [
+            {
+              "id": "id",
+              "label": "Connection ID",
+              "type": "string",
+              "profileField": "id",
+              "required": true
+            },
+            {
+              "id": "url",
+              "label": "Connection URL or DSN",
+              "type": "uri",
+              "profileField": "url"
+            },
+            {
+              "id": "user",
+              "label": "User",
+              "type": "string",
+              "profileField": "user"
+            },
+            {
+              "id": "host",
+              "label": "Host",
+              "type": "string",
+              "profileField": "host",
+              "required": true
+            },
+            {
+              "id": "port",
+              "label": "Port",
+              "type": "number",
+              "profileField": "port",
+              "default": 443
+            },
+            {
+              "id": "database",
+              "label": "Database",
+              "type": "string",
+              "profileField": "database"
+            },
+            {
+              "id": "readOnly",
+              "label": "Read-only connection",
+              "type": "boolean",
+              "profileField": "readOnly",
+              "default": false
+            },
+            {
+              "id": "options",
+              "label": "Driver options",
+              "type": "map",
+              "profileField": "options"
+            }
+          ],
+          "authMethods": [
+            {
+              "id": "none",
+              "label": "No authentication",
+              "kind": "none",
+              "secretPurposes": [],
+              "fields": []
+            },
+            {
+              "id": "connectionString",
+              "label": "Connection string / DSN",
+              "kind": "connectionString",
+              "secretPurposes": [],
+              "fields": [
+                {
+                  "id": "url",
+                  "label": "Connection URL or DSN",
+                  "type": "uri",
+                  "profileField": "url",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "personalAccessToken",
+              "label": "Personal access token",
+              "kind": "token",
+              "secretPurposes": [
+                "token"
+              ],
+              "fields": [
+                {
+                  "id": "token",
+                  "label": "Token",
+                  "type": "secret",
+                  "secretPurpose": "token"
+                }
+              ]
+            },
+            {
+              "id": "oauth2",
+              "label": "OAuth 2.0",
+              "kind": "oauth2",
+              "secretPurposes": [
+                "token"
+              ],
+              "fields": [
+                {
+                  "id": "accessToken",
+                  "label": "Access token",
+                  "type": "secret",
+                  "secretPurpose": "token"
+                },
+                {
+                  "id": "refreshToken",
+                  "label": "Refresh token",
+                  "type": "secret",
+                  "secretPurpose": "token"
+                },
+                {
+                  "id": "clientId",
+                  "label": "Client ID",
+                  "type": "string"
+                },
+                {
+                  "id": "clientSecret",
+                  "label": "Client secret",
+                  "type": "secret",
+                  "secretPurpose": "token"
+                }
+              ]
+            },
+            {
+              "id": "azureAd",
+              "label": "Azure AD / Entra ID",
+              "kind": "azureAd",
+              "secretPurposes": [
+                "token"
+              ],
+              "fields": [
+                {
+                  "id": "tenantId",
+                  "label": "Tenant ID",
+                  "type": "string"
+                },
+                {
+                  "id": "clientId",
+                  "label": "Client ID",
+                  "type": "string"
+                },
+                {
+                  "id": "clientSecret",
+                  "label": "Client secret",
+                  "type": "secret",
+                  "secretPurpose": "token"
+                },
+                {
+                  "id": "accessToken",
+                  "label": "Access token",
+                  "type": "secret",
+                  "secretPurpose": "token"
+                }
+              ]
+            },
+            {
+              "id": "servicePrincipal",
+              "label": "Service principal",
+              "kind": "oauth2",
+              "secretPurposes": [
+                "token"
+              ],
+              "fields": [
+                {
+                  "id": "clientId",
+                  "label": "Client ID",
+                  "type": "string"
+                },
+                {
+                  "id": "clientSecret",
+                  "label": "Client secret",
+                  "type": "secret",
+                  "secretPurpose": "token"
+                },
+                {
+                  "id": "tenantId",
+                  "label": "Tenant ID",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "id": "managedIdentity",
+              "label": "Managed identity",
+              "kind": "managedIdentity",
+              "secretPurposes": [],
+              "fields": []
+            },
+            {
+              "id": "browserSso",
+              "label": "Browser SSO",
+              "kind": "browserSso",
+              "secretPurposes": [
+                "token"
+              ],
+              "fields": []
+            },
+            {
+              "id": "customDriverOptions",
+              "label": "Custom driver options",
+              "kind": "custom",
+              "secretPurposes": [
+                "password",
+                "token",
+                "privateKey",
+                "privateKeyPassphrase"
+              ],
+              "fields": [
+                {
+                  "id": "options",
+                  "label": "Driver options",
+                  "type": "map",
+                  "profileField": "options"
+                }
+              ]
+            }
+          ],
+          "secretPurposes": [
+            "token",
+            "password",
+            "privateKey",
+            "privateKeyPassphrase"
+          ],
+          "tls": {
+            "supported": true,
+            "requiredByDefault": true,
+            "modes": [
+              "disable",
+              "prefer",
+              "require",
+              "verifyCa",
+              "verifyFull",
+              "clientCertificate"
+            ],
+            "fields": [
+              {
+                "id": "caCertificate",
+                "label": "CA certificate",
+                "type": "pem"
+              },
+              {
+                "id": "clientCertificate",
+                "label": "Client certificate",
+                "type": "pem"
+              },
+              {
+                "id": "clientPrivateKey",
+                "label": "Client private key",
+                "type": "pem",
+                "secretPurpose": "privateKey"
+              }
+            ]
+          },
+          "transports": [
+            "direct",
+            "sshTunnel",
+            "socks5Proxy",
+            "httpConnectProxy",
+            "proxyChain"
+          ],
+          "optionNamespaces": [
+            "profile.options",
+            "driver",
+            "tls",
+            "network",
+            "jdbc",
+            "databricks",
+            "oauth",
+            "azure"
+          ],
+          "customDriverOptions": true
+        }
       }
     ]
   },
